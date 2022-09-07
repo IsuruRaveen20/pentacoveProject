@@ -52,6 +52,21 @@ trait FormHelper
     }
 
     /**
+     * get designation
+     *
+     * @param  mixed $status
+     * @return void
+     */
+    public function getDesignation($status)
+    {
+        if ($status == 1) {
+            return  '<span class="badge badge-primary">WORKER</span>';
+        } else {
+            return  '<span class="badge badge-warning">MANAGER</span>';
+        }
+    }
+
+    /**
      * limit String
      *
      * @param  mixed $str

@@ -3,11 +3,8 @@
 use App\Http\Controllers\BookingRequestController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DonationRequestController;
-
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\VisitorRequestController;
-use App\Http\Controllers\VolunteerRequestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,19 +31,29 @@ Route::prefix('categories')->group(function () {
     Route::get('/change/status/{category_id}', [CategoryController::class, "changeStatus"])->name('categories.status.change');
 });
 
-//Visitor request
-// Route::prefix('visitor')->group(function () {
-//     Route::get('/', [VisitorRequestController::class, "index"])->name('requests.all');
-//     Route::get('/{request_id}/view', [VisitorRequestController::class, "view"])->name('requests.view');
-//     Route::get('/{request_id}/delete', [VisitorRequestController::class, "delete"])->name('requests.delete');
+// Post Management
+// Route::prefix('users')->group(function () {
+//     Route::get('/', [VisitorRequestController::class, "index"])->name('user.all');
+//     Route::get('/new', [CategoryController::class, "new"])->name('user.new');
+//     Route::post('/store', [CategoryController::class, "store"])->name('user.store');
+//     Route::get('/{user_id}/edit', [CategoryController::class, "edit"])->name('user.edit');
+//     Route::get('/{user_id}/view', [VisitorRequestController::class, "view"])->name('user.view');
+//     Route::post('/{user_id}/update', [CategoryController::class, "update"])->name('user.update');
+//     Route::get('/{user_id}/delete', [VisitorRequestController::class, "delete"])->name('user.delete');
+//     Route::get('/change/status/{user_id}', [CategoryController::class, "changeStatus"])->name('user.status.change');
 // });
 
-//bookings request
-// Route::prefix('bookings')->group(function () {
-//     Route::get('/', [BookingRequestController::class, "index"])->name('bookings.all');
-//     Route::get('/{request_id}/view', [BookingRequestController::class, "view"])->name('bookings.view');
-//     Route::get('/{request_id}/delete', [BookingRequestController::class, "delete"])->name('bookings.delete');
-// });
+//User Management
+Route::prefix('employees')->group(function () {
+    Route::get('/', [EmployeeController::class, "index"])->name('employees.all');
+    Route::get('/new', [EmployeeController::class, "new"])->name('employees.new');
+    Route::post('/store', [EmployeeController::class, "store"])->name('employees.store');
+    Route::get('/{employee_id}/edit', [EmployeeController::class, "edit"])->name('employees.edit');
+    Route::get('/{employee_id}/view', [EmployeeController::class, "view"])->name('employees.view');
+    Route::post('/{employee_id}/update', [EmployeeController::class, "update"])->name('employees.update');
+    Route::get('/{employee_id}/delete', [EmployeeController::class, "delete"])->name('employees.delete');
+    Route::get('/change/status/{employee_id}', [EmployeeController::class, "changeStatus"])->name('employees.status.change');
+});
 
 //donations request
 // Route::prefix('donations')->group(function () {

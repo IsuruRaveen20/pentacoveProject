@@ -3,9 +3,6 @@
 namespace domain\Services\CategoryService;
 
 use App\Models\Category;
-use App\Traits\FormHelper;
-use domain\Facades\CategoryFacade\CategoryFacade;
-use Illuminate\Http\Request;
 
 class CategoryService
 {

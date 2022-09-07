@@ -20,18 +20,26 @@
                     <li class="nav-item">
                         <a class="nav-link {{ in_array($curr_url,['categories.all','categories.view','categories.new','categories.edit'])?'active':'' }}"
                             href="{{ route('categories.all') }}">
-                            <i class="fas fa-camera-retro" aria-hidden="true"></i>
+                            <i class="fas fa-list" aria-hidden="true"></i>
                             <span class="hide-menu">Categories</span>
                         </a>
                     </li>
                     {{-- <li class="nav-item">
-                        <a class="nav-link {{ in_array($curr_url,['requests.all','requests.view'])?'active':'' }}"
-                            href="{{ route('requests.all') }}">
+                        <a class="nav-link {{ in_array($curr_url,['post.all','post.view','post.new','post.edit'])?'active':'' }}"
+                            href="{{ route('post.all') }}">
                             <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
-                            <span class="hide-menu">Contact Request</span>
+                            <span class="hide-menu">Post Management</span>
+                        </a>
+                    </li> --}}
+                    <li class="nav-item">
+                        <a class="nav-link {{ in_array($curr_url,['employees.all','employees.view','employees.new','employees.edit'])?'active':'' }}"
+                            href="{{ route('employees.all') }}">
+                            {{-- <i class="fas fa-user-open-text" aria-hidden="true"></i> --}}
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                            <span class="hide-menu">User Management</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link {{ in_array($curr_url,['bookings.all','bookings.view'])?'active':'' }}"
                             href="{{ route('bookings.all') }}">
                             <i class="fas fa-bookmark" aria-hidden="true"></i>
