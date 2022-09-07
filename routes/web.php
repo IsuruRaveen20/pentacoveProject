@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\BookingRequestController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DonationRequestController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -31,17 +30,18 @@ Route::prefix('categories')->group(function () {
     Route::get('/change/status/{category_id}', [CategoryController::class, "changeStatus"])->name('categories.status.change');
 });
 
-// Post Management
-// Route::prefix('users')->group(function () {
-//     Route::get('/', [VisitorRequestController::class, "index"])->name('user.all');
-//     Route::get('/new', [CategoryController::class, "new"])->name('user.new');
-//     Route::post('/store', [CategoryController::class, "store"])->name('user.store');
-//     Route::get('/{user_id}/edit', [CategoryController::class, "edit"])->name('user.edit');
-//     Route::get('/{user_id}/view', [VisitorRequestController::class, "view"])->name('user.view');
-//     Route::post('/{user_id}/update', [CategoryController::class, "update"])->name('user.update');
-//     Route::get('/{user_id}/delete', [VisitorRequestController::class, "delete"])->name('user.delete');
-//     Route::get('/change/status/{user_id}', [CategoryController::class, "changeStatus"])->name('user.status.change');
-// });
+// Articles Management
+Route::prefix('articles')->group(function () {
+    Route::get('/', [ArticleController::class, "index"])->name('articles.all');
+    Route::get('/new', [ArticleController::class, "new"])->name('articles.new');
+    Route::post('/store', [ArticleController::class, "store"])->name('articles.store');
+    Route::get('/{article_id}/edit', [ArticleController::class, "edit"])->name('articles.edit');
+    Route::get('/{article_id}/view', [ArticleController::class, "view"])->name('articles.view');
+    Route::post('/{article_id}/update', [ArticleController::class, "update"])->name('articles.update');
+    Route::get('/{article_id}/delete', [ArticleController::class, "delete"])->name('articles.delete');
+    Route::get('/change/status/{article_id}', [ArticleController::class, "changeStatus"])->name('articles.status.change');
+    Route::post('/store/image', [ArticleController::class, "storeImage"])->name('articles.store.image');
+});
 
 //User Management
 Route::prefix('employees')->group(function () {
@@ -55,29 +55,4 @@ Route::prefix('employees')->group(function () {
     Route::get('/change/status/{employee_id}', [EmployeeController::class, "changeStatus"])->name('employees.status.change');
 });
 
-//donations request
-// Route::prefix('donations')->group(function () {
-//     Route::get('/', [DonationRequestController::class, "index"])->name('donations.all');
-//     Route::get('/{request_id}/view', [DonationRequestController::class, "view"])->name('donations.view');
-//     Route::get('/{request_id}/delete', [DonationRequestController::class, "delete"])->name('donations.delete');
-// });
 
-//volunteers request
-// Route::prefix('volunteers')->group(function () {
-//     Route::get('/', [VolunteerRequestController::class, "index"])->name('volunteers.all');
-//     Route::get('/{request_id}/view', [VolunteerRequestController::class, "view"])->name('volunteers.view');
-//     Route::get('/{request_id}/delete', [VolunteerRequestController::class, "delete"])->name('volunteers.delete');
-// });
-
-//Settings
-// Route::prefix('/settings')->group(function () {
-//     Route::get('/social', [SettingController::class, "social"])->name('settings.social');
-//     Route::get('/contact', [SettingController::class, "contact"])->name('settings.contact');
-//     Route::get('/day', [SettingController::class, "day"])->name('settings.day');
-//     Route::get('/restaurant', [SettingController::class, "restaurant"])->name('settings.restaurant');
-
-//     Route::post('/update/social', [SettingController::class, "socialUpdate"])->name('settings.update.social');
-//     Route::post('/update/contact', [SettingController::class, "contactUpdate"])->name('settings.update.contact');
-//     Route::post('/update/day', [SettingController::class, "dayUpdate"])->name('settings.update.day');
-//     Route::post('/update/restaurant', [SettingController::class, "restaurantUpdate"])->name('settings.update.restaurant');
-// });

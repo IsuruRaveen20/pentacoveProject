@@ -24,19 +24,18 @@
                             <span class="hide-menu">Categories</span>
                         </a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link {{ in_array($curr_url,['post.all','post.view','post.new','post.edit'])?'active':'' }}"
-                            href="{{ route('post.all') }}">
-                            <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
-                            <span class="hide-menu">Post Management</span>
+                    <li class="nav-item">
+                        <a class="nav-link {{ in_array($curr_url,['articles.all','articles.view','articles.new','articles.edit'])?'active':'' }}"
+                            href="{{ route('articles.all') }}">
+                            <i class="fas fa-newspaper" aria-hidden="true"></i>
+                            <span class="hide-menu">Article Management</span>
                         </a>
-                    </li> --}}
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link {{ in_array($curr_url,['employees.all','employees.view','employees.new','employees.edit'])?'active':'' }}"
                             href="{{ route('employees.all') }}">
-                            {{-- <i class="fas fa-user-open-text" aria-hidden="true"></i> --}}
                             <i class="fas fa-user" aria-hidden="true"></i>
-                            <span class="hide-menu">User Management</span>
+                            <span class="hide-menu">Employee Management</span>
                         </a>
                     </li>
                     {{-- <li class="nav-item">

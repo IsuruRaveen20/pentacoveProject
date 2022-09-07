@@ -44,10 +44,10 @@ trait FormHelper
      */
     public function getStatus($status)
     {
-        if ($status == 1) {
-            return  '<span class="badge badge-success">Published</span>';
-        } else {
+        if ($status == 0) {
             return  '<span class="badge badge-danger">Drafted</span>';
+        } else {
+            return  '<span class="badge badge-success">Published</span>';
         }
     }
 
@@ -63,6 +63,15 @@ trait FormHelper
             return  '<span class="badge badge-primary">WORKER</span>';
         } else {
             return  '<span class="badge badge-warning">MANAGER</span>';
+        }
+    }
+
+    public function getGender($gender)
+    {
+        if ($gender == 1) {
+            return  '<span class="badge badge-primary">MALE</span>';
+        } else {
+            return  '<span class="badge badge-warning">FEMALE</span>';
         }
     }
 

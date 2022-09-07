@@ -58,4 +58,18 @@ class EmployeeService
     {
         return $this->employees->find($employee_id)->delete();
     }
+
+    public function changeStatus($employee_id)
+    {
+        $employees = $this->employees->find($employee_id);
+        if ($employees->status == 0) {
+            $employees->status = 1;
+            $employees->update();
+            return 1;
+        } else {
+            $employees->status = 0;
+            $employees->update();
+            return 0;
+        }
+    }
 }

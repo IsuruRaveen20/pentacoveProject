@@ -33,7 +33,6 @@
     <x-slot name="content">
         <div class="border-0 shadow card">
             <div class="py-4 table-responsive">
-                {{-- <livewire:vehicles.brand.all-data-table /> --}}
                 <table class="table" id="datatableid" class="dataTables">
                     <thead class="thead-light">
                         <th>#</th>
@@ -60,6 +59,15 @@
                                                 class="btn btn-warning">
                                                 <i class="fas fa-edit"></i>&nbsp;Edit
                                             </a>
+                                            @if ($category->status == 1)
+                                            <a class="dropdown-item change-status" href="javascript:void(0)" class="btn btn-danger"
+                                                title="" onclick="decline('{{ route('categories.status.change',$category->id) }}')"><i
+                                                    class="fas fa-times-circle"></i>&nbsp;Deactivate</a>
+                                            @else
+                                            <a class="dropdown-item change-status" href="javascript:void(0)" class="btn btn-danger"
+                                                title="" onclick="approve('{{ route('categories.status.change',$category->id) }}')"><i
+                                                    class="far fa-check-square"></i>&nbsp;Active</a>
+                                            @endif
                                             <a class="dropdown-item delete-slide" href="javascript:void(0)"
                                                 class="btn btn-danger" title=""
                                                 onclick="delconf('{{ route('categories.delete', $category->id) }}')"><i
@@ -112,13 +120,15 @@
                         </button>
                     </div>
                     <div class="modal-body" id="editCategoryContent">
-                        {{-- <form action="{{ route('categories.update',$category->id) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('categories.update', $category->id) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="inp_Category">Category</label>
-                                        <input type="text" name="title" class="form-control" id="inp_category" aria-describedby="inp_category" value="{{ $category->title }}"
+                                        <input type="text" name="title" class="form-control" id="inp_category"
+                                            aria-describedby="inp_category" value="{{ $category->title }}"
                                             placeholder="Enter Category" required>
                                     </div>
                                 </div>
@@ -134,7 +144,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </form> --}}
+                        </form>
                     </div>
                 </div>
             </div>

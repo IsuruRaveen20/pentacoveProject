@@ -20,7 +20,7 @@ class EmployeeController extends ParentController
     {
         $response['employees'] = EmployeeFacade::all();
         $response['tc'] = $this;
-        return view('pages.users.all')->with($response);
+        return view('pages.employees.all')->with($response);
     }
 
     /**
@@ -30,7 +30,7 @@ class EmployeeController extends ParentController
      */
     public function new()
     {
-        return view('pages.users.new');
+        return view('pages.employees.new');
     }
 
     /**
@@ -54,9 +54,10 @@ class EmployeeController extends ParentController
      */
     public function view($employee_id)
     {
-        $response['employees'] = EmployeeFacade::get($employee_id);
-        EmployeeFacade::read($employee_id);
-        return view('pages.users.view')->with($response);
+        $response['employee'] = EmployeeFacade::get($employee_id);
+        $response['tc'] = $this;
+        return view('pages.employees.show')->with($response);
+
     }
 
     /**
@@ -69,7 +70,7 @@ class EmployeeController extends ParentController
     {
         $response['employee'] = EmployeeFacade::get($employee_id);
         $response['tc'] = $this;
-        return view('pages.users.edit')->with($response);
+        return view('pages.employees.edit')->with($response);
     }
 
     /**
@@ -109,12 +110,36 @@ class EmployeeController extends ParentController
     public function changeStatus($employee_id)
     {
         $status = EmployeeFacade::changeStatus($employee_id);
-        if ($status == 1) {
-            $response['alert-success'] = 'Employee Published successfully';
-        }else {
+        if ($status == 0) {
             $response['alert-success'] = 'Employee Drafted successfully';
+        }else {
+            $response['alert-success'] = 'Employee Published successfully';
         }
         return redirect()->back()->with($response);
+    }
+
+    /**
+      * validate Email
+      *
+      * @param  mixed
+      * @return void
+      */
+
+    public function ValidateEmail(Request $request)
+    {
+        return EmployeeFacade::ValidateEmail($request);
+    }
+
+    /**
+      * validate nic
+      *
+      * @param  mixed
+      * @return void
+      */
+
+    public function validateNIC(Request $request)
+    {
+        return EmployeeFacade::validateNIC($request);
     }
 
 }

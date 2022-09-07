@@ -158,3 +158,67 @@
         </div>
     </x-slot>
 </x-app-layout>
+@section('js')
+<script>
+
+    function validateEmail() {
+        $.ajax({
+            url: "{{ route('employees.check.email') }}?email=" + $('#inp_email').val(),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'GET',
+            success: function (response) {
+                if (response == 1) {
+                    $('#email_msg').text('Email is Available');
+                    $('#email_msg').addClass("text-success").removeClass("text-danger");
+                    $('#submit-btn').prop('disabled', false);
+                } else {
+                    $('#email_msg').text('Email is already exists');
+                    $('#email_msg').addClass("text-danger").removeClass("text-success");
+                    $('#submit-btn').prop('disabled', true);
+                }
+            }
+        });
+    }
+
+    function validateNIC() {
+        $.ajax({
+            url: "{{ route('employees.check.nic') }}?nic=" + $('#inp_nic').val(),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'GET',
+            success: function (response) {
+                if (response == 1) {
+                    $('#nic_msg').text('NIC is Available');
+                    $('#nic_msg').addClass("text-success").removeClass("text-danger");
+                    $('#submit-btn').prop('disabled', false);
+                } else {
+                    $('#nic_msg').text('NIC is already exists');
+                    $('#nic_msg').addClass("text-danger").removeClass("text-success");
+                    $('#submit-btn').prop('disabled', true);
+                }
+            }
+        });
+    }
+
+</script>
+@endsection
+
+@section('css')
+<style>
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        border: #f0fafa;
+        border-radius: .375rem;
+        background-color: #fff;
+        background-clip: border-box;
+    }
+
+</style>
+@endsection

@@ -42,7 +42,6 @@ class CategoryController extends ParentController
     {
         CategoryFacade::create($request->all());
         $response['alert-success'] = 'Category added successfully';
-        // return redirect()->route('categories.all')->with($response);
         return redirect()->back()->with($response);
     }
 
@@ -68,8 +67,8 @@ class CategoryController extends ParentController
      */
     public function update(Request $request,$category_id)
     {
-        CategoryFacade::update($category_id, $request->all());
-        $response['alert-success'] = 'Category updated successfully';
+        CategoryFacade::update($request->all(), $category_id);
+        $response['alert-success'] = 'Category updated Successfully';
         return redirect()->route('categories.all')->with($response);
     }
 

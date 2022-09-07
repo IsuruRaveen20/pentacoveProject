@@ -25,7 +25,7 @@ class CreateEmployeesTable extends Migration
             $table->date('birthday')->nullable();
             $table->integer('gender')->default(1);
             $table->integer('designation')->default(1);
-            $table->integer('status')->default(1);
+            $table->integer('status')->default(0);
             $table->string('street_address')->nullable();
             $table->timestamps();
         });

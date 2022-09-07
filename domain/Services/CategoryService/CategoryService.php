@@ -41,7 +41,6 @@ class CategoryService
         return $this->categories->forRelated($category_id);
     }
 
-
     public function update(array $data, $category_id)
     {
         $categories = $this->categories->find($category_id);
@@ -57,5 +56,19 @@ class CategoryService
     public function delete($category_id)
     {
         return $this->categories->find($category_id)->delete();
+    }
+
+    public function changeStatus($category_id)
+    {
+        $categories = $this->categories->find($category_id);
+        if ($categories->status == 0) {
+            $categories->status = 1;
+            $categories->update();
+            return 1;
+        } else {
+            $categories->status = 0;
+            $categories->update();
+            return 0;
+        }
     }
 }
