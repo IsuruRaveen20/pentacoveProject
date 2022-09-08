@@ -5,14 +5,14 @@
                 <div class="header-body">
                     <div class="py-4 row align-items-center">
                         <div class="col-lg-8">
-                            <h6 class="mb-0 h2 text-dark d-inline-block">Employee Management</h6>
+                            <h6 class="mb-0 h2 text-dark d-inline-block">Article Management</h6>
                             <nav aria-label="breadcrumb" class="d-none d-md-block ">
                                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                     <li class="breadcrumb-item"><a href="{{ url('/') }}"><i
                                                 class="fas fa-home"></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Employee Management / Add New
+                                        Article Management / Add New
                                     </li>
                                 </ol>
                             </nav>
